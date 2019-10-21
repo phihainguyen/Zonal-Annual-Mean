@@ -3,6 +3,8 @@ createChart();
 async function getData() {
   const yearData = [];
   const tempData = [];
+  const northHem = [];
+  const southHem = [];
 
   const response = await fetch("ZonAnn.Ts+dSST.csv");
   //async/awaits have built in method to recieve and get raw text called .text()
@@ -18,14 +20,19 @@ async function getData() {
   table.forEach(row => {
     const columns = row.split(",");
     const year = columns[0];
+
     yearData.push(year);
     const temp = columns[1];
     tempData.push(parseFloat(temp) + 14);
+    const nh = columns[2];
+    northHem.push(parseFloat(nh) + 14);
+    const sh = columns[3];
+    southHem.push(parseFloat(sh) + 14);
     console.log(year, temp);
   });
   //   console.log(rows);
   // By returning our data as objects we will be able to access that object when calling it in the createChart() method
-  return { yearData, tempData };
+  return { yearData, tempData, northHem, southHem };
 }
 
 //=============CODE FOR CHART/TABLE================//
@@ -44,8 +51,26 @@ async function createChart() {
           label:
             "Combined Land-Sruface Air and Sea-Surface Water temperature(C°)",
           data: data.tempData,
-          backgroundColor: "rgba(255, 99, 132, 0.2)",
+          backgroundColor: "rgba(25, 199, 232, 0.2)",
           borderColor: "rgba(255, 99, 132, 1)",
+          borderWidth: 1,
+          fill: false
+        },
+        {
+          label:
+            "Combined Land-Sruface Air and Sea-Surface Water NORTHERN HEMISPHERE Temperature(C°)",
+          data: data.northHem,
+          backgroundColor: "rgba(252, 202, 3, 0.2)",
+          borderColor: "rgba(55, 939, 132, 1)",
+          borderWidth: 1,
+          fill: false
+        },
+        {
+          label:
+            "Combined Land-Sruface Air and Sea-Surface Water SOUTHERN HEMISPHERE Temperature(C°)",
+          data: data.southHem,
+          backgroundColor: "rgba(255, 99, 132, 0.2)",
+          borderColor: "rgba(252, 202, 3, 1)",
           borderWidth: 1,
           fill: false
         }

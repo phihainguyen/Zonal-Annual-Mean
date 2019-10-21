@@ -1,0 +1,43 @@
+body {
+  text-align: center;
+  margin: 20px;
+  position: relative;
+}
+h1 {
+  font-family: "Roboto", sans-serif;
+}
+.p {
+  text-align: left;
+  width: 50vw;
+  border: rgba(0, 0, 0, 0.345);
+  border-style: solid;
+  position: relative;
+  margin: auto;
+  padding: 20px;
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+}
+.para {
+  position: relative;
+  margin: auto;
+  justify-content: center;
+}
+.chart {
+  width: 80vw;
+  height: 100vh;
+  border: rgba(236, 38, 38, 0.728);
+  border-style: solid;
+  justify-content: center;
+  margin: auto;
+  padding: 20px;
+}
+.wrap {
+  margin-top: 20px;
+}
+img {
+  height: 200px;
+  width: 400px;
+  justify-content: center;
+  margin: auto;
+  margin-top: 20px;
+}
